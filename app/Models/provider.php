@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\event;
+use App\Models\parentt;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class provider extends Authenticatable
 {
@@ -48,4 +50,13 @@ class provider extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function parents(){
+        return $this->morphedByMany(parentt::class , 'providerable');
+    }
+
+    public function events(){
+        return $this->morphToMany(event::class , 'eventable');
+    }
 }

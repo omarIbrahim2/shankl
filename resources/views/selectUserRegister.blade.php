@@ -6,7 +6,7 @@
 
 
 <div class="user-levels">
-    <a href="{{url("parent/show/register")}}" class="user-level">
+    <a href="{{url("show/register")}}" class="user-level">
         <div class="level-img">
             <img src="{{asset('auth')}}/assets/images/user/Group.png" alt="level">
         </div>
@@ -14,7 +14,7 @@
             <h3>Parent</h3>
         </div>
     </a>
-    <a href="{{url("supplier/register")}}" class="user-level">
+    <a href="{{url("supplier/show/register")}}" class="user-level">
         <div class="level-img">
             <img src="{{asset('auth')}}/assets/images/user/Vector.png" alt="level">
         </div>
@@ -22,7 +22,7 @@
             <h3>Supplier</h3>
         </div>
     </a>
-    <a href="{{url("provider/register")}}" class="user-level">
+    <a href="{{url("provider/show/register")}}" class="user-level">
         <div class="level-img">
             <img src="{{asset('auth')}}/assets/images/user/Vector2.png" alt="level">
         </div>
@@ -30,7 +30,7 @@
             <h3>Provider</h3>
         </div>
     </a>
-    <a href="{{url("teacher/register")}}" class="user-level">
+    <a href="{{url("teacher/show/register")}}" class="user-level">
         <div class="level-img">
             <img src="{{asset('auth')}}/assets/images/user/teach.png" alt="level">
         </div>

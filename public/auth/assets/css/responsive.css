@@ -11,6 +11,19 @@
     margin-inline-start: auto;
     margin-inline-end: 8px;
   }
+  .next-event{
+    align-items: flex-start;
+  }
+  .next-event-date{
+    width: 30%;
+    padding: 32px;
+  }
+  .next-event-data{
+    width: 70%;
+  }
+  .footer .footer-nav ul li {
+    font-size: 16px;
+  }
 }
 @media screen and (max-width:768px){
   .services-left{
@@ -32,6 +45,17 @@
   footer .custom-logo{
     margin-top: 16px;
   }
+  .next-event-date{
+    width: 30%;
+    padding: 28px;
+    margin: 0 0 16px;
+  }
+  .next-event-data{
+    width: 100%;
+    padding: 0;
+  }
+ 
+  
 }
 @media screen and (max-width: 576px) {
   .home-slider .slider-content h1 {
@@ -54,5 +78,27 @@
   }
   .footer .footer-nav li a{
     font-size: 16px;
+  }
+  .navbar .icons{
+    font-size: 20px;
+    color: var(--main-color);
+    margin: 0 4px;
+    line-height: 26px;
+    vertical-align: middle;
+  }
+  .home-banner .filter-form{
+    flex-wrap: wrap;
+
+  }
+  .home-banner .filter-form .filter{
+    width: 50%;
+    margin-bottom: 16px;
+  }
+  .home-banner .filter-submit button{
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .page-search{
+    width: 80%;
   }
 }

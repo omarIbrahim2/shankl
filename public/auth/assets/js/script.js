@@ -76,3 +76,42 @@ $('.show-passowrd').on('mousedown',function(){
 }).bind('mouseup mouseleave touchend',function(){
   $(this).parent().find('input').attr('type','password')
 })
+
+$('.charcter input').on('click',function(){
+  $(".charcter input").siblings('label').css("animation-play-state","running")
+  $(".charcter input").siblings('label').find('span').css("opacity","0")
+  $(this).siblings('label').css("animation-play-state","paused")
+  $(this).siblings('label').find('span').css("opacity","1")
+})
+
+// notification icon
+
+if($(".notification").length){
+  $(".noti-icon").on('click',function(e){
+    $(".notification").slideToggle('fast')
+  })
+  $(".notification,.noti-icon").on('click',(e)=>{
+    e.stopPropagation()
+  })
+  $(document).on('click',function(){
+    $(".notification").slideUp('fast')
+  })
+}
+
+// search
+
+if($('.search-resault').length){
+  $('.search-input').on('input',function(){
+    var search=$('.search-input').val().toLowerCase()
+    $('.search-label').each(function(){
+      if($(this).text().toLowerCase().search(search)<0){
+        $(this).parents(".search-resault").css('display','none')
+      }
+      else{
+        $(this).parents(".search-resault").css('display','block')
+  
+      }
+    })
+    
+  })
+}

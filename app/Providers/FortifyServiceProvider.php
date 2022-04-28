@@ -84,7 +84,7 @@ class FortifyServiceProvider extends ServiceProvider
 
 
         Fortify::loginView(function () {
-            if (request()->is('parent/login')) {
+            if (request()->is('login')) {
                 return view('auth.parentt.login');
             }elseif (request()->is('teacher/login')) {
                 return view('auth.teacher.login');
@@ -100,13 +100,13 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::registerView(function(){
 
-            if (request()->is('parent/show/register')) {
+            if (request()->is('show/register')) {
                 return view('auth.parentt.register');
-            }elseif (request()->is('teacher/register')) {
+            }elseif (request()->is('teacher/show/register')) {
                 return view('auth.teacher.register');
-            }elseif (request()->is('provider/register')) {
+            }elseif (request()->is('provider/show/register')) {
                 return view('auth.provider.register');
-            }elseif (request()->is('supplier/register')) {
+            }elseif (request()->is('supplier/show/register')) {
                 return view('auth.supplier.register');
             }
 

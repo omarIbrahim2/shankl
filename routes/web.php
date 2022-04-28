@@ -12,6 +12,8 @@ use App\Http\Controllers\home\homeController;
 use App\Http\Controllers\parent\parentController;
 use App\Http\Controllers\provider\providerController;
 use App\Http\Controllers\teacher\teacherController;
+use App\Models\parentt;
+use App\Models\provider;
 use GuzzleHttp\Middleware;
 use phpDocumentor\Reflection\Types\Parent_;
 use Laravel\Fortify\Http\Controllers\RegisteredUserController;
@@ -94,6 +96,15 @@ Route::middleware(['socialUder'])->group(function(){
     Route::post('parent/{social}',[facebook::class , 'compeleteDataParent']);
 
     Route::post('teacher/{social}',[facebook::class , 'compeleteDataTeacher']);
+});
+
+
+Route::get('getParents' , function(){
+    $provider = provider::find(1);
+     $parent = parentt::find(1);
+     foreach($parent->providers as $provider){
+         dd($provider);
+     }
 });
 
 

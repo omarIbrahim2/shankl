@@ -3,11 +3,12 @@
 namespace App\Models;
 
 
+use App\Models\event;
+use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
-use Laravel\Sanctum\HasApiTokens;
 
 class teacher extends Authenticatable
 {
@@ -48,4 +49,9 @@ class teacher extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+    public function events(){
+        return $this->morphToMany(event::class , 'eventable');
+    }
 }

@@ -11,7 +11,6 @@
             <i class="fa-regular fa-envelope"></i>
         </span>
     </div>
-
     <div class="input-item me-auto ms-0">
         <input type="password" name="password" placeholder="password">
         <span>

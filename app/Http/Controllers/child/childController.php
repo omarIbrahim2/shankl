@@ -13,6 +13,7 @@ class childController extends Controller
     public function index($parent){
        // dd($parent);
         return view("web.addChild")->with("parent" , $parent);
+
     }
 
 

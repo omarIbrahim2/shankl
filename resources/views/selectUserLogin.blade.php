@@ -6,7 +6,7 @@
 
 
 <div class="user-levels">
-    <a href="{{url("parent/login")}}" class="user-level">
+    <a href="{{url("login")}}" class="user-level">
         <div class="level-img">
             <img src="{{asset('auth')}}/assets/images/user/Group.png" alt="level">
         </div>

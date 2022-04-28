@@ -2,11 +2,13 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use App\Models\event;
+use App\Models\provider;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class parentt extends Authenticatable
 {
@@ -47,5 +49,14 @@ class parentt extends Authenticatable
 
     public function childs(){
         return $this->hasMany(child::class);
+    }
+
+
+    public function providers(){
+        return $this->morphToMany(provider::class , 'providerable');
+    }
+
+    public function events(){
+        return $this->morphToMany(event::class , 'eventable');
     }
 }
