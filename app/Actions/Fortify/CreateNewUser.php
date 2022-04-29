@@ -106,7 +106,7 @@ class CreateNewUser implements CreatesNewUsers
         ])->validate();
 
 
-        supplier::create([
+       return supplier::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'type' => $input['type'],

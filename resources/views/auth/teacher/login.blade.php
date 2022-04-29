@@ -2,7 +2,7 @@
 
 
 @section('form')
-
+@include("inc.messages")
 <form method="POST"  action="{{url("teacher/login")}}">
     @csrf
     <div class="input-item me-auto ms-0">
@@ -40,5 +40,21 @@
     </div>
 
 </form>
+<div class="social-auth">
+    <h3>Sign Up with social media</h3>
+    <div class="social-btns">
+        <a href="{{ url('auth/teacher/facebook/redirect') }}"
+            class="btn-custom facebook">
+            <span class="icon"><i
+                    class="fa-brands fa-facebook-f"></i></span>
+            <span>Facebook</span>
+        </a>
+        <a href="{{ url('auth/teacher/google/redirect') }}" class="btn-custom gmail">
+            <span class="icon"><i
+                    class="fa-regular fa-envelope"></i></span>
+            <span>gmail</span>
+        </a>
+    </div>
+</div>
 
 @endsection

@@ -20,7 +20,9 @@
                                     <p class="text-start p-0">login to your account <a href="#">Click Here</a></p>
                                 </div>
                                 <div class="contact-form black-contact-form">
-                                    <form>
+                                    @include("inc.messages")
+                                    <form method="POST"  action="{{url("supplier/register")}}">
+                                        @csrf
                                         <div class="input-item me-auto ms-0">
                                             <input type="text" name="name" placeholder="name">
                                             <span>
@@ -45,7 +47,7 @@
                                             </span>
                                         </div>
                                         <div class="input-item me-auto ms-0">
-                                            <input type="password" name="confirmPassword" placeholder="Confirm Password">
+                                            <input type="password" name="password_confirmation" placeholder="Confirm Password">
                                             <span>
                                                 <i class="fa-solid fa-lock"></i>
                                             </span>
@@ -72,7 +74,7 @@
                                             </span>
                                         </div>
                                         <div class="input-item me-auto ms-0">
-                                            <input type="text" name="orgnization" placeholder="orgnization name">
+                                            <input type="text" name="orgName" placeholder="orgnization name">
                                             <span>
                                                 <i class="fa-solid fa-truck"></i>
                                             </span>

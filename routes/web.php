@@ -8,6 +8,7 @@ use App\Http\Controllers\auth\google;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\auth\facebook;
 use App\Http\Controllers\child\childController;
+use App\Http\Controllers\events\eventsController;
 use App\Http\Controllers\home\homeController;
 use App\Http\Controllers\parent\parentController;
 use App\Http\Controllers\provider\providerController;
@@ -44,11 +45,16 @@ Route::get('/user' , function(){
     ]);
 });
 
-Route::middleware(['parentt'])->group(function(){
-    Route::get('/add/child/{parent}' , [childController::class , 'index'])->name('newChild');
+Route::middleware(['parentMidle'])->group(function(){
+
     Route::get('/parent' , [parentController::class , 'index'])->name('parent');
-    Route::post('/store/child' , [childController::class , 'addChild'])->middleware(['guest:'.'parent']);
+    Route::post('/store/child' , [childController::class , 'addChild']);
+    Route::get('/add/child/{parent}' , [childController::class , 'index'])->name('newChild');
+
 });
+
+
+
 
 
 
@@ -74,9 +80,14 @@ Route::middleware(['teacher'])->group(function(){
     Route::get("/teacher" , [teacherController::class , 'index'])->name('teacher');
 });
 
-Route::middleware(['auth'])->group(function(){
+ Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard' ,[adminController::class , 'index'])->name('dashboard');
-});
+    Route::get('/dashboard/events' ,[eventsController::class , 'showEvents'])->name('events');
+
+ });
+
+
+
 
 
  Route::get('auth/{user}/facebook/redirect' , [facebook::class , 'redirectFacebok']);

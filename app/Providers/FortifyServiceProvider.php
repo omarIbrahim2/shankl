@@ -24,7 +24,7 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        if (request()->is('store/child')) {
+        if (request()->is('parent/*')) {
             Config::set('fortify.guard' , 'parent');
             Config::set('fortify.prefix' , 'parent');
             Config::set('fortify.passwords' , 'parent');
@@ -58,6 +58,7 @@ class FortifyServiceProvider extends ServiceProvider
 
         }
 
+
     }
 
     /**
@@ -84,7 +85,7 @@ class FortifyServiceProvider extends ServiceProvider
 
 
         Fortify::loginView(function () {
-            if (request()->is('login')) {
+            if (request()->is('parent/login')) {
                 return view('auth.parentt.login');
             }elseif (request()->is('teacher/login')) {
                 return view('auth.teacher.login');
@@ -92,7 +93,7 @@ class FortifyServiceProvider extends ServiceProvider
                 return view('auth.provider.login');
             }elseif (request()->is('supplier/login')) {
                 return view('auth.supplier.login');
-            }else {
+            }else{
                  return view('auth.user.login');
             }
 
@@ -100,13 +101,13 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::registerView(function(){
 
-            if (request()->is('show/register')) {
+            if (request()->is('parent/register')) {
                 return view('auth.parentt.register');
-            }elseif (request()->is('teacher/show/register')) {
+            }elseif (request()->is('teacher/register')) {
                 return view('auth.teacher.register');
-            }elseif (request()->is('provider/show/register')) {
+            }elseif (request()->is('provider/register')) {
                 return view('auth.provider.register');
-            }elseif (request()->is('supplier/show/register')) {
+            }elseif (request()->is('supplier/register')) {
                 return view('auth.supplier.register');
             }
 

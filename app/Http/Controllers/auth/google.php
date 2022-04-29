@@ -59,7 +59,7 @@ class google extends Controller
                  return redirect()->route('teacherDatagoogle');
              }else{
                  $social_user->delete();
-                 return Auth::guard('teacher')->login($teacherUser);
+                 Auth::guard('teacher')->login($teacherUser);
                  return redirect()->route('teacher');
              }
     }

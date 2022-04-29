@@ -3,10 +3,12 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use App\Models\parentt;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class parentt
+
+class parentMidle
 {
     /**
      * Handle an incoming request.
@@ -17,9 +19,13 @@ class parentt
      */
     public function handle(Request $request, Closure $next)
     {
+        $parent = Auth::guard('parent')->user();
+
         if (Auth::guard('parent')->check()) {
             return $next($request);
         }
-        return $next($request);
+
+
+        return redirect()->back();
     }
 }

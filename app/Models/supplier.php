@@ -22,8 +22,12 @@ class supplier extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        "gender",
         'password',
+        "phone" ,
+        "address",
+        "type",
+        "orgName",
+        
     ];
 
     /**
@@ -34,6 +38,7 @@ class supplier extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+
     ];
 
     /**

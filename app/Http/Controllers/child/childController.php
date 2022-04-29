@@ -36,7 +36,7 @@ class childController extends Controller
             'parentt_id' => $request->parentt_id,
         ]);
 
-
-        return app(RegisterResponse::class);
+         return redirect()->route('parent');
+        //return app(RegisterResponse::class);
     }
 }

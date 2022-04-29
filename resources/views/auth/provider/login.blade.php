@@ -2,6 +2,7 @@
 
 
 @section('form')
+@include("inc.messages")
 <form method="POST" action="{{url("provider/login")}}">
     @csrf
     <div class="input-item me-auto ms-0">
