@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\parentt;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -16,11 +17,6 @@ class parentseeder extends Seeder
      */
     public function run()
     {
-        DB::table('parentts')->insert([
-            'name' => "Kamal ahmed",
-            'email' => 'kamal@gmail.com',
-            "phone"=>"01054585",
-            'password' => Hash::make('123456789'),
-        ]);
+        parentt::factory()->count(70)->create();
     }
 }
