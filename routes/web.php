@@ -12,6 +12,7 @@ use App\Http\Controllers\events\eventsController;
 use App\Http\Controllers\home\homeController;
 use App\Http\Controllers\parent\parentController;
 use App\Http\Controllers\provider\providerController;
+use App\Http\Controllers\supplier\supplierController;
 use App\Http\Controllers\teacher\teacherController;
 use App\Models\parentt;
 use App\Models\provider;
@@ -109,13 +110,18 @@ Route::middleware(['socialUder'])->group(function(){
     Route::post('teacher/{social}',[facebook::class , 'compeleteDataTeacher']);
 });
 
+Route::get("/supplier" , [supplierController::class , "index"]);
 
 Route::get('getParents' , function(){
-    $provider = provider::find(1);
-     $parent = parentt::find(1);
-     foreach($parent->providers as $provider){
-         dd($provider);
-     }
+    $provider = provider::find(3);
+
+    $parent = parentt::find(78);
+
+    dd($parent->providers);
+
+
+
+
 });
 
 

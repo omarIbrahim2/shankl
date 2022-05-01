@@ -9,13 +9,26 @@
                 </tr>
             </thead>
             <tbody>
+                @foreach($events as $event )
+
+
                 <tr>
-                    <td>Shaun Park</td>
-                    <td>10/08/2020</td>
+                    <td>{{$event->image}}</td>
+                    <td>{{$event->name}}</td>
                     <td class="text-center"><button class="btn btn-danger mb-2">Delete</button>
                     </td>
                 </tr>
+
+                @endforeach
+
             </tbody>
         </table>
+
+        @if(!empty($events))
+    {{ $events->links("Pagination-links") }}
+
+        @endif
+
+
     </div>
     </div>

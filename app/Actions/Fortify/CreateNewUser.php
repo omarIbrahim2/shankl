@@ -2,17 +2,19 @@
 
 namespace App\Actions\Fortify;
 
-use App\Model\supplier;
-use App\Models\parentt;
-use App\Models\provider;
-use App\Models\teacher;
+
+
 use App\Models\User;
+use App\Models\parentt;
+use App\Models\teacher;
+use App\Models\provider;
+use App\Models\supplier;
 use Illuminate\Support\Arr;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Validation\Rule;
-use Laravel\Fortify\Contracts\CreatesNewUsers;
 use phpDocumentor\Reflection\Types\Parent_;
+use Laravel\Fortify\Contracts\CreatesNewUsers;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -112,6 +114,7 @@ class CreateNewUser implements CreatesNewUsers
             'type' => $input['type'],
             'phone' => $input['phone'],
             'orgName'=>$input['orgName'],
+            "address" => $input["address"],
             'password' => Hash::make($input['password']),
         ]);
     }
