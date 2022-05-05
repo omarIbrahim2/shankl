@@ -1,5 +1,24 @@
+
 <div class="container">
+
+
+    <div class="row justify-content-between mt-2 mb-3">
+        <div class="col-md-3">
+            <input type="text" placeholder="search" class="form-control">
+        </div>
+
+        <div class="col-md-5">
+            <button type="button" class="btn btn-success">Add Event</button>
+        </div>
+
+    </div>
     <div class="table-responsive">
+        @if (session()->has("message"))
+        <div class="alert alert-success">
+            {{session('message')}}
+        </div>
+        @endif
+
         <table class="table table-bordered mb-4">
             <thead>
                 <tr>
@@ -13,10 +32,14 @@
 
 
                 <tr>
-                    <td>{{$event->image}}</td>
+                    <td><img style="width: 40px" src="{{asset("$event->image")}}" alt=""></td>
                     <td>{{$event->name}}</td>
-                    <td class="text-center"><button class="btn btn-danger mb-2">Delete</button>
+                    <td class="text-center">
+                        <button wire:click="eventDeleting({{$event->id}})"  class="btn btn-danger mb-2">Delete</button>
+                        <button class="btn btn-primary" >Edit</button>
                     </td>
+
+
                 </tr>
 
                 @endforeach
@@ -30,5 +53,11 @@
         @endif
 
 
-    </div>
-    </div>
+           </div>
+</div>
+
+
+
+
+
+

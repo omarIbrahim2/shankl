@@ -4,24 +4,41 @@
 
 
     <ul class="pagination">
-        {{-- @if ($paginator->onFirstPage()) --}}
+        @if ($paginator->onFirstPage())
         <li   class="prev">
-            <button wire:click="previousPage">Prev</button>
-            {{-- {!! __('pagination.previous') !!} --}}
+           prev
         </li>
-        {{-- @endif --}}
-        {{-- <li><a href="javascript:void(0);">1</a></li>
-        <li class="active"><a href="javascript:void(0);">2</a></li>
-        <li><a href="javascript:void(0);">3</a></li> --}}
+        @else
+        <li style="cursor: pointer"  wire:click="previousPage" class="prev">
+            Prev
+        </li>
+        @endif
 
-        {{-- @if ($paginator->hasMorePages()) --}}
-        <li  class="next">
-            <button wire:click="nextPage" >Next</button>
-            {{-- {!! __('pagination.next') !!} --}}
+        @foreach ($elements as $element )
+          @if (is_array($element))
+               @foreach ($element as $page => $url )
+                @if ($page  == $paginator->currentPage())
+                <li class="p-2" style="cursor: pointer"  wire:click="gotoPage({{$page}})">{{$page}}</li>
+
+                @else
+                <li class="p-2" style="cursor: pointer" wire:click="gotoPage({{$page}})">{{$page}}</li>
+                @endif
+
+               @endforeach
+          @endif
+        @endforeach
+
+
+        @if ($paginator->hasMorePages())
+        <li style="cursor: pointer" class="next" wire:click="nextPage "  class="next">
+          next
         </li>
-        {{-- @endif --}}
+        @else
+        <li class="next" class="next">
+            next
+        </li>
+        @endif
     </ul>
 
 </div>
-pkpokptkgprtg
 @endif

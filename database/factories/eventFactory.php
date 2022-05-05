@@ -22,7 +22,7 @@ class eventFactory extends Factory
         $i++;
         return [
             "name" => $this->faker->word(),
-            "image"=>"$i.png",
+            "image"=>"uploads/events/$i.png",
             'desc'=>$this->faker->text(),
             "startDate"=>$this->faker->date(),
             "endDate"=>$this->faker->date(),

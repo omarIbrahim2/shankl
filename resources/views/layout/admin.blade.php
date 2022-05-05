@@ -8,8 +8,11 @@
     <link rel="icon" type="image/x-icon" href="{{asset('admin')}}/img/favicon.ico"/>
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,500,600,700&display=swap" rel="stylesheet">
-    <link href="{{asset('admin')}}/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('admin')}}/bootstrap/css/bootstrap.min.css" rel="stylesheet"  />
     <link href="{{asset('admin')}}/css/plugins.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('admin')}}/plugins/perfect-scrollbar/perfect-scrollbar.css " rel="stylesheet"  />
+    <link href="{{asset('admin')}}/plugins/highlight/styles/monokai-sublime.css"  rel="stylesheet"  />
+
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
@@ -239,13 +242,35 @@
     <script src="{{asset('admin')}}/bootstrap/js/bootstrap.min.js"></script>
     <script src="{{asset('admin')}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="{{asset('admin')}}/js/app.js"></script>
-
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
         $(document).ready(function() {
             App.init();
         });
     </script>
     <script src="{{asset('admin')}}/js/custom.js"></script>
+
+
+    <script>
+
+        window.addEventListener('confirmDelete' , function(e){
+            swal.fire({
+                title: 'deleting event',
+                text: "are you sure you want to delete it ?",
+               icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Yes, delete it!',
+                cancelButtonText: 'No, cancel!',
+                 reverseButtons: true,
+            }).then((result)=>{
+                if (result.isConfirmed) {
+
+                  window.livewire.emit("deleteConfirmed")
+                }
+            })
+
+        })
+        </script>
     <!-- END GLOBAL MANDATORY SCRIPTS -->
         @yield("scripts")
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
