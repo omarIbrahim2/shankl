@@ -24,6 +24,15 @@
   .footer .footer-nav ul li {
     font-size: 16px;
   }
+  .right-side .main-sub-title {
+    padding: 16px 16px;
+  }
+  .service-item-data{
+    justify-content: flex-start;
+  }
+  .service-booking{
+    text-align: left;
+  }
 }
 @media screen and (max-width:768px){
   .services-left{
@@ -55,7 +64,6 @@
     padding: 0;
   }
  
-  
 }
 @media screen and (max-width: 576px) {
   .home-slider .slider-content h1 {
@@ -100,5 +108,20 @@
   }
   .page-search{
     width: 80%;
+  }
+  .event-left-side{
+    margin-bottom: 64px;
+  }
+  .provider{
+    margin-bottom: 64px;
+  }
+  .edit-teacher-profile .left-side{
+    border: none;
+  }
+  .teacher-left-side::after{
+    display: none;
+  }
+  .auth-logo{
+    display: none;
   }
 }

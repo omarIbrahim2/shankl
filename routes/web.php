@@ -14,6 +14,7 @@ use App\Http\Controllers\parent\parentController;
 use App\Http\Controllers\provider\providerController;
 use App\Http\Controllers\supplier\supplierController;
 use App\Http\Controllers\teacher\teacherController;
+use App\Http\Livewire\ParentProfile;
 use App\Models\parentt;
 use App\Models\provider;
 use GuzzleHttp\Middleware;
@@ -51,6 +52,7 @@ Route::middleware(['parentMidle'])->group(function(){
     Route::get('/parent' , [parentController::class , 'index'])->name('parent');
     Route::post('/store/child' , [childController::class , 'addChild']);
     Route::get('/add/child/{parent}' , [childController::class , 'index'])->name('newChild');
+    Route::get('edit/parent/profile', [parentController::class , "showEdit"])->name("parentProfile");
 
 });
 

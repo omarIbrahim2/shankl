@@ -115,3 +115,82 @@ if($('.search-resault').length){
     
   })
 }
+
+// count-down
+
+const countdown = () => {
+  const countDate = new Date("May 5, 2022 00:00:00").getTime();
+  const now = new Date().getTime();
+  const gap = countDate - now;
+
+  // How does the time work?
+  const second = 1000;
+  const minute = second * 60;
+  const hour = minute * 60;
+  const day = hour * 24;
+
+  // calculate
+  const textDay = Math.floor(gap / day);
+  const textHour = Math.floor((gap % day) / hour);
+  const textMinute = Math.floor((gap % hour) / minute);
+  const textSecond = Math.floor((gap % minute) / second);
+
+  $(".days").text (textDay+":");
+  $(".hours").text (textHour+":");
+  $(".mins").text (textMinute+":");
+  $(".secs").text (textSecond+":");
+
+  if (gap <= 0) {
+    clearInterval(watchCountdown);
+    $(".days").html("0") ;
+    $(".hours").html("0") ;
+    $(".mins").html("0") ;
+    $(".secs").html("0") ;
+  }
+};
+
+let watchCountdown = setInterval(countdown, 1000);
+
+
+// providers slider
+var swiper = new Swiper(".provider .mySwiper", {
+  loop: true,
+  spaceBetween: 10,
+  slidesPerView: 3,
+  freeMode: true,
+  watchSlidesProgress: true,
+});
+var swiper2 = new Swiper(".provider .mySwiper2", {
+  loop: true,
+  spaceBetween: 10,
+ 
+  thumbs: {
+    swiper: swiper,
+  },
+});
+
+// provider detailes color and image
+// color
+if($('main').data('color')!=="defined"){
+  var color=$("main").data('color')
+  $("main").find(".detials-items .detials-item , .prov-socials div a").css("color",color)
+  $("main").find(".prov-socials div ").css("border-color",color)
+}
+
+if($('main').data('image')!=="defined"){
+  var image=$("main").data('image')
+  console.log(image)
+  $('.image-content').append(`<img src=${image} alt="logo">`)
+}
+// make div editaple
+$(".provider-description").on('click',function(){
+  $(this).find("p").attr("contentEditable","true")
+})
+
+// date
+$(".textbox-n").on('focus',function(){
+  $(this).attr("type","date")
+})
+$(".textbox-n").on("blur",function(){
+  $(this).attr("type","text")
+})

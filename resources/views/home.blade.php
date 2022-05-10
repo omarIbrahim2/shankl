@@ -1,5 +1,11 @@
-<x-header/>
+@extends("layouts.main")
+
+@section("title")
+home
+@endsection
+
 @livewireStyles
+@section("section")
 <body>
     <!-- img light box -->
     <div class="lightbox">
@@ -773,4 +779,4 @@
         </div>
     </footer>
     @livewireScripts
-   <x-footer/>
+   @endsection

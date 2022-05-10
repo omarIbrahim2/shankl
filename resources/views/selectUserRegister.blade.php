@@ -1,4 +1,4 @@
-@extends("layout.selectUser")
+@extends("layouts.selectUser")
 
 
 @section("content")
