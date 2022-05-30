@@ -15,6 +15,7 @@
                     <div class="row">
                         <div class="col-md-4 col-12 mb-s-0 mb-3">
                             <div class="from-container">
+                                <form wire:submit.prevent="update" enctype="multipart/form-data">
                                 <div class="contact-form black-contact-form">
                                         <div class="input-item me-auto ms-0">
                                             <div>
@@ -103,8 +104,18 @@
                                                 <i class="fa-solid fa-pen"></i>
                                             </span>
                                         </div>
-                                        {{-- <div class="input-item me-auto ms-0">
-                                            <input type="file"  id="parent-profile">
+                                        <div class="input-item me-auto ms-0">
+                                            <div>
+                                                @error("image")
+
+                                                <div class="alert alert-danger">
+                                                    {{$message}}
+                                                </div>
+
+                                                @enderror
+                                            </div>
+
+                                            <input wire:model="image" type="file"  id="parent-profile">
 
                                             <label class="file-input" for="parent-profile">
                                                 <span>
@@ -115,13 +126,15 @@
                                                     choose
                                                 </button>
                                             </label>
-                                        </div> --}}
+                                        </div>
 
                                         <div class="input-item me-auto ms-0">
-                                            <button wire:click="update"  type="button" class="custom-out-btn btn-form">
+                                            <button   type="submit" class="custom-out-btn btn-form">
                                                 save
                                             </button>
                                         </div>
+
+                                    </form>
 
                                         @if (session()->has("success"))
                                         <div class="alert alert-success">
@@ -134,7 +147,10 @@
 
                             </div>
                         </div>
-                         @livewire("edit-child-parent" , ["authParent" => $authParent])
+
+                         <div class="col-md-8 col-12 mb-s-0 mb-3">
+                            @livewire("edit-child-parent" , ["authParent" => $authParent])
+                         </div>
 
                     </div>
                 </div>

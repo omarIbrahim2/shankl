@@ -10,14 +10,20 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
+
+
+
+
 class provider extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable ;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
+     * @param \Illuminate\Database\Eloquent\Builder $query
+     * @return \Illuminate\Database\Eloquent\Builder
      */
     protected $fillable = [
         'name',
@@ -31,6 +37,8 @@ class provider extends Authenticatable
         "educational_system",
         'password',
     ];
+
+
 
     /**
      * The attributes that should be hidden for serialization.
@@ -58,5 +66,9 @@ class provider extends Authenticatable
 
     public function events(){
         return $this->morphToMany(event::class , 'eventable');
+    }
+
+    public function scopelessthanOrEqual($query , $installments){
+        return $query->where('installments' , '<=' , $installments);
     }
 }

@@ -23,10 +23,13 @@ return new class extends Migration
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
             $table->string("phone");
+            $table->string("facebookLink")->nullable();
+            $table->string("googleLink")->nullable();
+            $table->string("twitterLink")->nullable();
+            $table->string("linkedinLink")->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->string("image")->nullable();
-
             $table->timestamps();
         });
     }

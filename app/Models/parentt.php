@@ -26,6 +26,7 @@ class parentt extends Authenticatable
         'password',
         'facebook_id',
         'google_id',
+        "image",
     ];
 
     /**

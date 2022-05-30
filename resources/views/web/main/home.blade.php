@@ -25,6 +25,47 @@ home
                 <a class="navbar-brand" href="#">
                     <img src="{{asset('auth')}}/assets/images/logo/logo.png" alt="shankal">
                 </a>
+                @if (auth('parent')->check())
+
+                <div class="auth-btn">
+                    <a class="icons" href="{{route("parentProfile")}}">
+                        <img src="{{asset("auth")}}/assets/images/logo/user.png" alt="user avatar">
+                    </a>
+
+
+                </div>
+                <div class="auth-btn">
+                    <form action="{{url("logout")}}"  method="POST" >
+                        @csrf
+                          <button class="custom-out-btn">Sign out</button>
+                    </form>
+                </div>
+
+                @elseif (auth('teacher')->check())
+
+                <div class="auth-btn">
+                    <a class="icons" href="{{route("teacher")}}">
+                        <img src="{{asset("auth")}}/assets/images/logo/user.png" alt="user avatar">
+                    </a>
+
+
+                </div>
+                @elseif (auth('provider')->check())
+                <div class="auth-btn">
+                    <a class="icons" href="{{route("provider")}}">
+                        <img src="{{asset("auth")}}/assets/images/logo/user.png" alt="user avatar">
+                    </a>
+
+
+                </div>
+                <div class="auth-btn">
+                    <form action="{{url("logout")}}"  method="POST" >
+                        @csrf
+                          <button class="custom-out-btn">Sign out</button>
+                    </form>
+                </div>
+
+                @else
                 <div class="auth-btn">
                     <a href="{{route('selectUserRegister')}}" class="custom-out-btn">
                         Sign Up
@@ -36,6 +77,14 @@ home
                         login
                     </a>
                 </div>
+
+
+                @endif
+
+
+
+
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                     aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

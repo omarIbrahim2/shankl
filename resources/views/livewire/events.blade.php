@@ -8,7 +8,7 @@
         </div>
 
         <div class="col-md-5">
-            <button type="button" class="btn btn-success">Add Event</button>
+            <a href="{{route('addEvent')}}" class="btn btn-success">Add Event</a>
         </div>
 
     </div>
@@ -36,7 +36,7 @@
                     <td>{{$event->name}}</td>
                     <td class="text-center">
                         <button wire:click="eventDeleting({{$event->id}})"  class="btn btn-danger mb-2">Delete</button>
-                        <button class="btn btn-primary" >Edit</button>
+                        <a href="{{url("/dashboard/show/edit/$event->id")}}" class="btn btn-primary" >Edit</a>
                     </td>
 
 

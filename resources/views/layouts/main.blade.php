@@ -35,6 +35,7 @@
     <script src="{{asset('auth')}}/assets/js/swiper-bundle.min.js"></script>
     <!-- custom js -->
     <script src="{{asset('auth')}}/assets/js/script.js"></script>
+    
     @yield("scripts")
 </body>
 

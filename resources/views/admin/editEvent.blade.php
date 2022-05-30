@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends("layouts.admin")
 @section('styles')
 <link href="{{asset("admin")}}/css/scrollspyNav.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="{{asset("admin")}}/css/forms/theme-checkbox-radio.css">
@@ -7,15 +7,16 @@
 @livewireStyles
 @endsection
 
-@section("content")
-@livewire('events')
 
+
+
+@section('content')
+@livewire('edit-event', ['event' => $event])
 @endsection
 
+
+
 @livewireScripts
-
-
-
 
 
 

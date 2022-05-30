@@ -20,15 +20,16 @@ class providerFactory extends Factory
     public function definition()
     {
 
-       static $types = ['center', 'school', 'nursery'];
+       static $types = ['Kindergarden', 'School', 'Nursery'];
+       static $areas = ['Cairo' , "Giza" , 'Qaliubia'];
         static $eduSys = ['IG' , 'National program' , 'international' , 'SAT'];
         return [
             'name'=>$this->faker->word(4 , true),
             'email'=>$this->faker->freeEmail,
             'password'=>$this->faker->password,
-            'area'=>$this->faker->city,
+            'area'=>$this->faker->randomElement($areas),
             'phone'=>$this->faker->randomNumber(8),
-            'installments'=>$this->faker->numberBetween(500 , 2000),
+            'installments'=>$this->faker->numberBetween(500 , 3000),
             'seats'=>$this->faker->numberBetween(70 , 500),
             'seat_price'=>"200",
             'type'=>$this->faker->randomElement($types),

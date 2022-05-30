@@ -22,7 +22,7 @@
             <h3>Supplier</h3>
         </div>
     </a>
-    <a href="{{url("provider/register")}}" class="user-level">
+    <a href="{{route('eduLevel')}}" class="user-level">
         <div class="level-img">
             <img src="{{asset('auth')}}/assets/images/user/Vector2.png" alt="level">
         </div>

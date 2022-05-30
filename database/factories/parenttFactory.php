@@ -24,6 +24,7 @@ class parenttFactory extends Factory
             'email'=>$this->faker->safeEmail,
             'password'=>$this->faker->password,
             'phone'=>$this->faker->randomNumber(8),
+            'image'=>null,
 
         ];
     }

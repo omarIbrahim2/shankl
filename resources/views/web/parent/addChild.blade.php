@@ -79,7 +79,7 @@
                                             <h3>Sign Up with social media</h3>
                                             <div class="social-btns">
                                                 <div class="input-item m-0 mb-3 charcter">
-                                                    <input type="radio" name="Avatar" value="public/auth/assets/images/charcters/shankal.png" id="male">
+                                                    <input type="radio" name="Avatar" value="auth/assets/images/charcters/shankal.png" id="male">
                                                     <label for="male" class="icon-animate">
                                                         <img src="{{asset("auth")}}/assets/images/charcters/shankal.png" alt="shankal">
                                                         <span><i class="fa-solid fa-check"></i></span>
@@ -87,7 +87,7 @@
 
                                                 </div>
                                                 <div class="input-item m-0 mb-3 charcter">
-                                                    <input type="radio" name="Avatar" value="public/auth/assets/images/charcters/shankola.png" id="female">
+                                                    <input type="radio" name="Avatar" value="auth/assets/images/charcters/shankola.png" id="female">
                                                     <label for="female" class="icon-animate">
                                                         <img src="{{asset("auth")}}/assets/images/charcters/shankola.png" alt="shankola">
                                                         <span><i class="fa-solid fa-check"></i></span>

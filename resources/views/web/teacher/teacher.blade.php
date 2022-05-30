@@ -1,14 +1,17 @@
 @extends("layouts.main")
+
 @section("title")
-  parent home
+/ teacher home
 @endsection
+
+
 
 @section("section")
 <body>
     <!-- img light box -->
     <div class="lightbox">
         <div class="inner">
-            <img src="{{asset("auth")}}" alt="">
+            <img src="" alt="">
         </div>
         <div class="close">
             <span>&times;</span>
@@ -21,15 +24,14 @@
         <nav class="navbar navbar-expand-lg navbar-light ">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="{{asset("auth")}}/assets/images/logo/logo.png" alt="shankal">
+                    <img src="{{"auth"}}/assets/images/logo/logo.png" alt="shankal">
                 </a>
                 <div class="auth-btn">
-                    <form action="{{url("logout")}}"  method="POST" >
+                    <form method="POST" action="{{url('logout')}}">
                         @csrf
-                          <button class="custom-out-btn">Sign out</button>
+                        <button class="custom-out-btn">Sign out</button>
                     </form>
-
-                    <a class="icons" href="">
+                    <a class="icons" href="#">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </a>
                     <a class="icons m-0 noti-icon" href="#">
@@ -38,21 +40,21 @@
                             <ul>
                                 <li>
                                     <a href="#">
-                                        <img src="{{asset("auth")}}/assets/images/logo/noti.png" alt="notification icon">
+                                        <img src="{{'auth'}}/assets/images/logo/noti.png" alt="notification icon">
                                         <h5 class="not-author">@hussien</h5>
                                         <p class="not-action">see your request</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="{{asset("auth")}}/assets/images/logo/noti.png" alt="notification icon">
+                                        <img src="{{'auth'}}/assets/images/logo/noti.png" alt="notification icon">
                                         <h5 class="not-author">@hussien</h5>
                                         <p class="not-action">see your request</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="{{asset("auth")}}/assets/images/logo/noti.png" alt="notification icon">
+                                        <img src="{{"auth"}}assets/images/logo/noti.png" alt="notification icon">
                                         <h5 class="not-author">@hussien</h5>
                                         <p class="not-action">see your request</p>
                                     </a>
@@ -66,8 +68,13 @@
                             </ul>
                         </div>
                     </a>
-                    <a class="icons" href="{{route("parentProfile")}}">
-                        <img src="{{asset("auth")}}/assets/images/logo/user.png" alt="user avatar">
+                    <a class="icons" href="#">
+                           @if ($loginTeacher->image == null)
+                               <img src="{{'auth'}}/assets/images/logo/user.png" alt="user avatar">
+                            @else
+                                <img src="{{$loginTeacher->image}}" alt="user avatar">
+                           @endif
+
                     </a>
                 </div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
@@ -168,62 +175,10 @@
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="service" style="--clr:#00A0DC">
                                     <div class="service-icon">
-                                        <i class="fa-regular fa-user"></i>
+                                        <i class="fa-solid fa-lock"></i>
                                     </div>
                                     <div class="service-name">
-                                        <h3>Reservation User Page</h3>
-                                    </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-12">
-                                <div class="service" style="--clr:#FF2BB3">
-                                    <div class="service-icon">
-                                        <i class="fa-solid fa-location-dot"></i>
-                                    </div>
-                                    <div class="service-name">
-                                        <h3>My Area</h3>
-                                    </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-12">
-                                <div class="service" style="--clr:#AF62A6">
-                                    <div class="service-icon">
-                                        <i class="fa-regular fa-calendar-days"></i>
-                                    </div>
-                                    <div class="service-name">
-                                        <h3>Events</h3>
-                                    </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-12">
-                                <div class="service" style="--clr:#BCCF01">
-                                    <div class="service-icon">
-                                        <i class="fa-solid fa-house"></i>
-                                    </div>
-                                    <div class="service-name">
-                                        <h3>Center</h3>
-                                    </div>
-                                    <a href="#" class="custom-out-btn">
-                                        More
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-6 col-12">
-                                <div class="service" style="--clr:#AF62A6">
-                                    <div class="service-icon">
-                                        <i class="fa-solid fa-building-columns"></i>
-                                    </div>
-                                    <div class="service-name">
-                                        <h3>School</h3>
+                                        <h3>Private Lectures</h3>
                                     </div>
                                     <a href="#" class="custom-out-btn">
                                         More
@@ -233,16 +188,17 @@
                             <div class="col-lg-4 col-md-6 col-12">
                                 <div class="service" style="--clr:#00A0DC">
                                     <div class="service-icon">
-                                        <i class="fa-solid fa-pen-ruler"></i>
+                                        <i class="fa-solid fa-lock-open"></i>
                                     </div>
                                     <div class="service-name">
-                                        <h3>Teacher</h3>
+                                        <h3>Public Lecture</h3>
                                     </div>
                                     <a href="#" class="custom-out-btn">
                                         More
                                     </a>
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -279,7 +235,7 @@
                                 </p>
                             </div>
                             <div class="col-lg-6 order-lg-0 order-first">
-                                <img src="{{asset("auth")}}/assets/images/logo/Shanklbig.png" alt="about us">
+                                <img src="{{"auth"}}/assets/images/logo/Shanklbig.png" alt="about us">
                             </div>
                         </div>
                     </div>
@@ -305,7 +261,7 @@
                             </div>
                             <div class="contact-item">
                                 <i class="fa-solid fa-phone"></i>
-                                <a href="/tel:+962 6 5669933">
+                                <a href="tel:+962 6 5669933">
                                     +962 6 5669933
                                 </a>
                             </div>
@@ -389,7 +345,7 @@
                 <div class="row">
                     <div class="col-md-2">
                         <div class="logo">
-                            <img src="{{asset("auth")}}/assets/images/logo/logo.png" alt="logo">
+                            <img src="assets/images/logo/logo.png" alt="logo">
                         </div>
                     </div>
                     <div class="col-md-8">
@@ -405,11 +361,16 @@
                     </div>
                     <div class="col-md-2">
                         <div class="custom-logo">
-                            <img src="{{asset("auth")}}/assets/images/logo/Shankal.png" alt="shankal">
+                            <img src="{{"auth"}}assets/images/logo/Shankal.png" alt="shankal">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
-  @endsection
+
+
+@endsection
+
+
+

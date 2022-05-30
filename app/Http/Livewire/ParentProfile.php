@@ -6,9 +6,11 @@ use auth;
 use App\Models\parentt;
 use Livewire\Component;
 use Illuminate\Support\Facades\Hash;
+use Livewire\WithFileUploads;
 
 class ParentProfile extends Component
 {
+    use WithFileUploads;
 
     public $name;
     public $email;
@@ -16,7 +18,7 @@ class ParentProfile extends Component
     public $password;
     public $password_confirmation;
     public $authParent ;
-
+    public $image;
 
 
 
@@ -25,6 +27,7 @@ class ParentProfile extends Component
       'email' => 'required|email',
       'phone' => 'required|string|max:8',
       'password' =>'required|string|min:8|confirmed',
+      'image'   =>  'image|mimes:jpg,png,jpeg,gif,svg|max:1024',
     ];
 
 
@@ -34,16 +37,14 @@ class ParentProfile extends Component
         $this->name = auth("parent")->user()->name;
         $this->email = auth("parent")->user()->email;
         $this->phone = auth("parent")->user()->phone;
-
+        $this->image = auth("parent")->user()->image;
 
 
     }
 
     public function render()
     {
-        $childs = $this->authParent->childs;
 
-       // dd($childs);
         return view('livewire.parent-profile');
     }
 
@@ -51,12 +52,18 @@ class ParentProfile extends Component
     {
         $this->validate();
 
+        if ($this->image !== '') {
+
+            $parentPhoto = $this->image->store('uploads/parents' ,'public');
+        }
+
 
       $this->authParent->update([
         'name' => $this->name,
         'email' => $this->email,
         'phone' => $this->phone,
         'password'=> Hash::make($this->password),
+        'image' => $parentPhoto,
        ]);
 
 
@@ -65,7 +72,7 @@ class ParentProfile extends Component
 
 
 
-    
+
 
 
 

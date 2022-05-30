@@ -1,9 +1,21 @@
 <div class="row">
-    <div class="col-md-4 col-12 mb-s-0 mb-3">
+    <div class="col-md-6 col-12 mb-s-0 mb-3">
         <div class="from-container">
             <div class="contact-form black-contact-form">
+                @if (session()->has("success"))
+                <div class="alert alert-success">
+                    {{session('success')}}
+                   </div>
+                @endif
+                <form wire:submit.prevent="updateChild" enctype="multipart/form-data">
                     <div class="input-item me-auto ms-0">
-                        <input type="text" name="name" placeholder="name" wire:model="childName">
+                        @error("name")
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>
+
+                        @enderror
+                        <input type="text"  placeholder="name" wire:model="name">
                         <span>
                             <i class="fa-solid fa-user"></i>
                         </span>
@@ -14,7 +26,13 @@
 
 
                     <div class="input-item me-auto ms-0">
-                        <select wire:model="childBirth" placeholder="MM">
+                        @error("birth_date")
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>
+
+                        @enderror
+                        <select wire:model="birth_date" placeholder="MM">
                             <option disabled aria-hidden="true">MM</option>
                             <option selected name="January" value="January">Jan</option>
                             <option name="February" value="February">Feb</option>
@@ -38,7 +56,13 @@
                         </span>
                     </div>
                     <div class="input-item me-auto ms-0">
-                        <input type="text" name="age" placeholder="age" wire:model="childAge">
+                        @error("age")
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>
+
+                        @enderror
+                        <input type="text"  placeholder="age" wire:model="age">
                         <span>
                             <i class="fa-regular fa-calendar-days"></i>
                         </span>
@@ -47,7 +71,13 @@
                         </span>
                     </div>
                     <div class="input-item me-auto m-0">
-                        <input type="text" name="educationalStage" placeholder="educationalStage" wire:model="EduStage">
+                        @error("grade")
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>
+
+                        @enderror
+                        <input type="text"  placeholder="educationalStage" wire:model="grade">
                         <span>
                             <i class="fa-solid fa-book"></i>
                         </span>
@@ -56,43 +86,53 @@
                         </span>
                     </div>
                     <div class="input-item me-auto ms-0">
-                        <input type="file" wire:model="childImg"  name="profile" id="parent-profile">
+                        @error("Avatar")
+                        <div class="alert alert-danger">
+                            {{$message}}
+                        </div>
+
+                        @enderror
+                        <input type="file" wire:model="Avatar"   id="parent-profile">
 
                         <label class="file-input" for="parent-profile">
                             <span>
                                 <i class="fa-regular fa-image"></i>
                             </span>
                             <p class="upload-text">Upload Profile</p>
-                            <button class="btn-custom btn-gray-custom">
+                             <button  class="btn-custom btn-gray-custom">
                                 choose
                             </button>
                         </label>
                     </div>
 
                     <div class="input-item me-auto ms-0">
-                        <button type="button" class="custom-out-btn btn-form">
+                        <button  type="submit" class="custom-out-btn btn-form">
                             save
                         </button>
                     </div>
-
+                </form>
 
 
             </div>
         </div>
     </div>
-    <div class="col-md-4 col-12 mb-s-0 mb-3">
+    <div class="col-md-6 col-12 mb-s-0 mb-3">
         <div class="from-container">
             <div class="kids-container">
+                @if (session()->has("deleted"))
+                <div class="alert alert-danger">
+                    {{session('deleted')}}
+                   </div>
+                @endif
+                @foreach ($childs as  $child )
 
-                @foreach ($childs as $child )
-
-                <div style="cursor: pointer" class="kid"  id="kidElement" wire:click="fillInputs({{$child}})" >
+                <div  style="cursor: pointer" class="kid"  wire:click="fillInputs({{$child}})" >
                     <div class="kid-icon icon-animate">
-                        <img src="{{asset($child->Avatar)}}" alt="shankal">
+                        <img style="width: 100%" style="border-radius: 100%" src="{{asset("/storage"."/".$child->Avatar)}}" alt="shankal">
                     </div>
                     <div class="kid-data">
                         <p class="kid-name">{{$child->name}}</p>
-                        <p class="kid-status"><a href="#"><i class="fa-regular fa-trash-can"></i></a></p>
+                        <p class="kid-status"><button wire:click="ChildDeleting({{$child->id}})" type="button"><i class="fa-regular fa-trash-can"></i></button></p>
                     </div>
                 </div>
                 @endforeach

@@ -12,7 +12,8 @@
     <link href="{{asset('admin')}}/css/plugins.css" rel="stylesheet" type="text/css" />
     <link href="{{asset('admin')}}/plugins/perfect-scrollbar/perfect-scrollbar.css " rel="stylesheet"  />
     <link href="{{asset('admin')}}/plugins/highlight/styles/monokai-sublime.css"  rel="stylesheet"  />
-
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css">
+    <link rel="stylesheet" href="{{asset("admin")}}/css/structure.css">
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM STYLES -->
@@ -113,7 +114,7 @@
                 <div class="profile-info">
                     <figure class="user-cover-image"></figure>
                     <div class="user-info">
-                        <img src="assets/img/90x90.jpg" alt="avatar">
+                        <img src="{{asset("admin")}}/img/90x90.jpg" alt="avatar">
                         <h6 class="">Sonia Shaw</h6>
                         <p class="">Project Leader</p>
                     </div>
@@ -243,6 +244,7 @@
     <script src="{{asset('admin')}}/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="{{asset('admin')}}/js/app.js"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
     <script>
         $(document).ready(function() {
             App.init();
@@ -251,26 +253,81 @@
     <script src="{{asset('admin')}}/js/custom.js"></script>
 
 
-    <script>
 
-        window.addEventListener('confirmDelete' , function(e){
-            swal.fire({
-                title: 'deleting event',
-                text: "are you sure you want to delete it ?",
-               icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Yes, delete it!',
-                cancelButtonText: 'No, cancel!',
-                 reverseButtons: true,
-            }).then((result)=>{
-                if (result.isConfirmed) {
 
-                  window.livewire.emit("deleteConfirmed")
-                }
-            })
+   <script>
 
+
+    window.addEventListener('confirmDelete' , function(e){
+    Swal.fire({
+            title: 'deleting event',
+            text: "are you sure you want to delete it ?",
+           icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Yes, delete it!',
+            cancelButtonText: 'No, cancel!',
+             reverseButtons: true,
+        }).then((result)=>{
+            if (result.isConfirmed) {
+
+              window.livewire.emit("deleteConfirmed")
+            }
         })
-        </script>
+
+    })
+
+
+    var picker = new Pikaday(
+        {
+
+            field: $('#startDate')[0],
+
+            format: 'D/M/YYYY',
+            toString(date, format) {
+        // you should do formatting based on the passed format,
+        // but we will just return 'D/M/YYYY' for simplicity
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        return `${year}-${month}-${day}`;
+    },
+    }
+
+
+        );
+
+
+        var picker2 = new Pikaday(
+        {
+
+            field: $('#endDate')[0],
+
+            format: 'D/M/YYYY',
+            toString(date, format) {
+        // you should do formatting based on the passed format,
+        // but we will just return 'D/M/YYYY' for simplicity
+        const day = date.getDate();
+        const month = date.getMonth() + 1;
+        const year = date.getFullYear();
+        return `${year}-${month}-${day}`;
+    },
+    }
+
+
+        );
+    // console.log(picker);
+    </script>
+
+
+<script>
+
+
+setTimeout(function() {
+    $('#eventMessage').fadeOut('slow');
+}, 30000);
+</script>
+
+
     <!-- END GLOBAL MANDATORY SCRIPTS -->
         @yield("scripts")
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->

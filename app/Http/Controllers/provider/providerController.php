@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class providerController extends Controller
 {
     public function index(){
-        
-        return view("web/provider");
+
+        return view("web.provider.provider");
     }
 }

@@ -8,14 +8,18 @@ use Illuminate\Http\Request;
 class homeController extends Controller
 {
     public function index(){
-        return view('home');
+        return view('web.main.home');
     }
 
     public function selectRegisterUser(){
-        return view('selectUserRegister');
+        return view('web.main.selectUserRegister');
     }
 
     public function selectLoginUser(){
-        return view('selectUserLogin');
+        return view('web.main.selectUserLogin');
+    }
+
+    public function selectEduLevel(){
+        return view('web.main.eduLevel');
     }
 }

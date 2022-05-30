@@ -15,6 +15,7 @@ use App\Http\Controllers\provider\providerController;
 use App\Http\Controllers\supplier\supplierController;
 use App\Http\Controllers\teacher\teacherController;
 use App\Http\Livewire\ParentProfile;
+use App\Models\event;
 use App\Models\parentt;
 use App\Models\provider;
 use GuzzleHttp\Middleware;
@@ -36,7 +37,7 @@ use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 Route::get('/',[homeController::class , 'index'])->name('home');
 Route::get('/select/register',[homeController::class , 'selectRegisterUser'])->name('selectUserRegister');
 Route::get('/select/login', [homeController::class , 'selectLoginUser'])->name('selectUserLogin');
-
+Route::get('/eduLevel/select' , [homeController::class , 'selectEduLevel'])->name('eduLevel');
 
 
 Route::get('/user' , function(){
@@ -54,6 +55,11 @@ Route::middleware(['parentMidle'])->group(function(){
     Route::get('/add/child/{parent}' , [childController::class , 'index'])->name('newChild');
     Route::get('edit/parent/profile', [parentController::class , "showEdit"])->name("parentProfile");
 
+});
+
+
+Route::middleware(['teacher'])->group(function(){
+    Route::get("/teacher" , [teacherController::class , 'index'])->name('teacher');
 });
 
 
@@ -79,13 +85,15 @@ Route::post('supplier/register' , [RegisteredUserController::class , 'storeSuppl
 
 
 
-Route::middleware(['teacher'])->group(function(){
-    Route::get("/teacher" , [teacherController::class , 'index'])->name('teacher');
-});
+
+
+
 
  Route::middleware(['auth'])->group(function(){
     Route::get('/dashboard' ,[adminController::class , 'index'])->name('dashboard');
     Route::get('/dashboard/events' ,[eventsController::class , 'showEvents'])->name('events');
+    Route::get('/dashboard/add/event', [eventsController::class , 'create'] )->name('addEvent');
+    Route::get('/dashboard/show/edit/{eventId}' , [eventsController::class , 'showEdit']);
 
  });
 
@@ -125,5 +133,8 @@ Route::get('getParents' , function(){
 
 
 });
+
+
+Route::get('parent/filter' , [parentController::class , 'filterSchools']);
 
 

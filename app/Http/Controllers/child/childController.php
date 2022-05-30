@@ -5,6 +5,7 @@ namespace App\Http\Controllers\child;
 use App\Models\child;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Http\Responses\RegisterResponse;
 
@@ -12,7 +13,7 @@ class childController extends Controller
 {
     public function index($parent){
        // dd($parent);
-        return view("web.addChild")->with("parent" , $parent);
+        return view("web.parent.addChild")->with("parent" , $parent);
 
     }
 
@@ -26,13 +27,14 @@ class childController extends Controller
             'grade' =>['required'],
             'Avatar' => ['required' , 'string'],
         ])->validate();
-
+            $Photopath = Storage::putFile('public/uploads/childs' , $request->Avatar);
+            $modifiedPhoto =substr($Photopath ,  6);
        $x = child::create([
             'name' => $request->name,
             'age' => $request->age,
             'birth_date' => $request->birth_date,
             'grade' => $request->grade,
-            'Avatar' => $request->Avatar,
+            'Avatar' => $modifiedPhoto,
             'parentt_id' => $request->parentt_id,
         ]);
 

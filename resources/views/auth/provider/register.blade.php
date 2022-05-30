@@ -111,7 +111,7 @@
                                             </div>
                                             <div class="radio">
                                                 <input type="radio" name="type" value="center" id="center">
-                                                <label class="custom-out-btn" for="center">center</label>
+                                                <label class="custom-out-btn" for="center">kindergarden</label>
                                             </div>
                                             <div class="radio">
                                                 <input type="radio" name="type" value="nurcery" id="nurcery">

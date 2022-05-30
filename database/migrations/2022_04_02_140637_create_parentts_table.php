@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string("email")->unique();
             $table->string("password");
             $table->string("phone" , 8);
+            $table->string("image")->nullable();
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
             $table->timestamp('email_verified_at')->nullable();
