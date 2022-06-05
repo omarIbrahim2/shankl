@@ -54,4 +54,21 @@ class teacher extends Authenticatable
     public function events(){
         return $this->morphToMany(event::class , 'eventable');
     }
+
+
+
+    public function services()
+    {
+        return $this->morphMany(Service::class , 'serviceable');
+    }
+
+    public function cart()
+    {
+        return $this->morphOne(Cart::class , 'cartable');
+    }
+
+    public function orders()
+    {
+        return $this->morphMany(Order::class , 'orderable');
+    }
 }

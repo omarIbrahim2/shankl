@@ -7,11 +7,13 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\auth\google;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\auth\facebook;
+use App\Http\Controllers\Cats\CategoriesConterller;
 use App\Http\Controllers\child\childController;
 use App\Http\Controllers\events\eventsController;
 use App\Http\Controllers\home\homeController;
 use App\Http\Controllers\parent\parentController;
 use App\Http\Controllers\provider\providerController;
+use App\Http\Controllers\services\servicescontroller;
 use App\Http\Controllers\supplier\supplierController;
 use App\Http\Controllers\teacher\teacherController;
 use App\Http\Livewire\ParentProfile;
@@ -38,8 +40,6 @@ Route::get('/',[homeController::class , 'index'])->name('home');
 Route::get('/select/register',[homeController::class , 'selectRegisterUser'])->name('selectUserRegister');
 Route::get('/select/login', [homeController::class , 'selectLoginUser'])->name('selectUserLogin');
 Route::get('/eduLevel/select' , [homeController::class , 'selectEduLevel'])->name('eduLevel');
-
-
 Route::get('/user' , function(){
 
     $notifications =  notification::all();
@@ -48,12 +48,23 @@ Route::get('/user' , function(){
     ]);
 });
 
+
+Route::middleware(['parentMidle',  'teacher' ])->group(function(){
+
+
+});
+
+
+
 Route::middleware(['parentMidle'])->group(function(){
 
     Route::get('/parent' , [parentController::class , 'index'])->name('parent');
     Route::post('/store/child' , [childController::class , 'addChild']);
     Route::get('/add/child/{parent}' , [childController::class , 'index'])->name('newChild');
     Route::get('edit/parent/profile', [parentController::class , "showEdit"])->name("parentProfile");
+
+    Route::get('services' , [servicescontroller::class , 'index'])->name('services');
+    Route::get('categories' , [CategoriesConterller::class , 'index'])->name('cats');
 
 });
 

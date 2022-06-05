@@ -37,4 +37,9 @@ class supplier extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function services()
+    {
+        return $this->morphMany(Service::class , 'serviceable');
+    }
 }

@@ -60,4 +60,14 @@ class parentt extends Authenticatable
     public function events(){
         return $this->morphToMany(event::class , 'eventable');
     }
+
+    public function cart()
+    {
+        return $this->morphOne(Cart::class , 'cartable');
+    }
+
+    public function orders()
+    {
+        return $this->morphMany(Order::class , 'orderable');
+    }
 }

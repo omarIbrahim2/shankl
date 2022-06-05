@@ -71,4 +71,14 @@ class provider extends Authenticatable
     public function scopelessthanOrEqual($query , $installments){
         return $query->where('installments' , '<=' , $installments);
     }
+
+    public function cart()
+    {
+        return $this->morphOne(Cart::class , 'cartable');
+    }
+
+    public function orders()
+    {
+        return $this->morphMany(Order::class , 'orderable');
+    }
 }

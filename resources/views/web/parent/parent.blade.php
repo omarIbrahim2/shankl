@@ -86,7 +86,7 @@
                             <a class="nav-link active" aria-current="page" href="#header">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#services">Services</a>
+                            <a class="nav-link" href="{{route('cats')}}">Services</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#about">About Us</a>

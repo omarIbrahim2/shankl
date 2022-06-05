@@ -20,6 +20,10 @@ class DatabaseSeeder extends Seeder
            Userseeder::class,
            providerseeder::class,
            eventseeder::class,
+           CategorySeeder::class,
+           SupplierSeeder::class,
+           TeacherSeeder::class,
+           ServiceSeeder::class,
 
         ]);
     }
